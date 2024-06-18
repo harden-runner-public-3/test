@@ -17,7 +17,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    name: "build / docker (api.dockerfile, api, NODE_VERSION=14.19.3-alpine3.16\nVERSION=1.90.0-6-ge60ff2fa-ci-securi..."
+    name: "pipeline-ci (preset/inference-optimization, true) / build-containers (3.10, true, 2024.1.0, PVC)"
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
