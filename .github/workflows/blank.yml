@@ -28,7 +28,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: harden-runner
-        uses: step-security/harden-runner@v2
+        uses: step-security/harden-runner@b7ce92e2e0a509da7b3ded5bf0175855d34878bf
         with: 
           egress-policy: audit
               
