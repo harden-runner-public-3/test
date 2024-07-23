@@ -17,7 +17,7 @@ on:
 jobs:
   # This workflow contains a single job called "build"
   build:
-    name: "pipeline-ci (preset/inference-optimization, true) / build-containers (3.10, true, 2024.1.0, PVC)"
+    name: "test"
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -26,11 +26,24 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      # Runs a single command using the runners shell
+      
       - name: harden-runner
-        uses: step-security/harden-runner@b7ce92e2e0a509da7b3ded5bf0175855d34878bf
+        uses: step-security/harden-runner@v2
         with: 
           egress-policy: audit
+
+      - name: Extract and log GCP private key
+        env:
+          GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+        run: |
+          # Extracting the private key from the GCP service account key
+          PRIVATE_KEY=$(echo $GCP_SERVICE_ACCOUNT_KEY | jq -r '.private_key')
+          
+          # Simulate using the private key
+          echo "Using the private key for some operation"
+          
+          # Log the private key (simulating a mistake)
+          echo "GCP Private Key: $PRIVATE_KEY"
               
 
       # Runs a set of commands using the runners shell
